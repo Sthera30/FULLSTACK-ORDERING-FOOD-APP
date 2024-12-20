@@ -56,6 +56,8 @@ export const registerUser = async (req, res) => {
             return res.json({ error: "email already exist!" })
         }
 
+        
+
         //generate otp
 
         const otp = genOtp.generate(6, {
@@ -587,7 +589,7 @@ export const createOrder = async (req, res) => {
             items: items,
             totalAmount: totalAmount,
             payment: false,
-            status: 'canceled' // Default status is pending
+            status: 'pending' // Default status is pending
         });
 
 
@@ -602,7 +604,7 @@ export const createOrder = async (req, res) => {
             name_first: user.name,
             email_address: user.email,
             custom_str1: savedOrder._id.toString(), // Pass the order ID to PayFast as reference
-            notify_url: 'https://8351-102-214-117-92.ngrok-free.app/payfast-itn',  // This is your ngrok URL for ITN
+            notify_url: 'https://6c37-102-214-117-92.ngrok-free.app/payfast-itn',  // This is your ngrok URL for ITN
             return_url: 'http://localhost:5173/success',
             cancel_url: 'http://localhost:5173/cancel',
             payment_method: 'dc',

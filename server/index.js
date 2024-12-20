@@ -17,21 +17,27 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 const allowedOrigins = [
-    'http://localhost:5175', // Local frontend URL
-    'https://mern-food-ordering-app-10.onrender.com' // Production frontend URL
-  ];
-  
-  app.use(cors({
-      credentials: true,
-      origin: (origin, callback) => {
-          if (!origin || allowedOrigins.includes(origin)) {
-              callback(null, true);
-          } else {
-              callback(new Error('Not allowed by CORS'));
-          }
-      }
-  }));
-  
+    'http://localhost:5175', // Local frontend URLrrrrr
+];
+
+/* app.use(cors({
+     credentials: true,
+     origin: (origin, callback) => {
+         if (!origin || allowedOrigins.includes(origin)) {
+             callback(null, true);
+         } else {
+             callback(new Error('Not allowed by CORS'));
+         }
+     }
+ }));
+ */
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
+
 
 app.use(cookieParser())
 
@@ -169,10 +175,10 @@ app.get('*', (req, res) => {
 
 //connect to the database
 
-const PORT = process.env.PORT || 8088
+const PORT = process.env.PORT || 8090
 const mongo_url = process.env.MONGO_URL
 
-mongoose.connect(mongo_url).then(() => {
+mongoose.connect('mongodb://localhost:27017/userDB').then(() => {
     console.log("connected to the database!")
     app.listen(PORT, () => {
         console.log(`Server is listening at port ${PORT}!`);

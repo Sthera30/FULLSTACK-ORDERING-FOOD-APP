@@ -17,7 +17,7 @@ function TrackOrder() {
 
     try {
 
-      const res = await axios.get("https://mern-food-ordering-app-10.onrender.com/GetOrderById", {
+      const res = await axios.get("http://localhost:8090/GetOrderById", {
         params: { id }
       })
 

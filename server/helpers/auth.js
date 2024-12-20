@@ -92,7 +92,7 @@ export const hashingOtp = (otp) => {
     return new Promise((resolve, reject) => {
 
         //increase security
-        
+
         bcrypt.genSalt(12, (err, salt) => {
 
             if (err) {

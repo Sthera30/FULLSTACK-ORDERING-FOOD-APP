@@ -13,7 +13,7 @@ function Protected({ children }) {
 
         try {
 
-            const res = await axios.post("https://mern-food-ordering-app-10.onrender.com/getUser", {
+            const res = await axios.post("http://localhost:8090/getUser", {
                 token: localStorage.getItem("token")
             },
 
