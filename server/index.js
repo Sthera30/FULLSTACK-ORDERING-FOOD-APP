@@ -32,10 +32,17 @@ const allowedOrigins = [
  }));
  */
 
-app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
-}));
+ const corsOptions = {
+    origin: [
+        "http://localhost:5173", 
+        "https://fullstack-ordering-food-frontend-app.onrender.com" 
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true 
+};
+
+
+app.use(cors(corsOptions));
 
 
 
