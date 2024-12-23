@@ -178,9 +178,9 @@ app.get('*', (req, res) => {
 //connect to the database
 
 const PORT = process.env.PORT || 8090
-const mongo_url = process.env.MONGO_URL
+const MONGO_URL = process.env.MONGO_URL
 
-mongoose.connect('mongodb://localhost:27017/userDB').then(() => {
+mongoose.connect(MONGO_URL).then(() => {
     console.log("connected to the database!")
     app.listen(PORT, () => {
         console.log(`Server is listening at port ${PORT}!`);
