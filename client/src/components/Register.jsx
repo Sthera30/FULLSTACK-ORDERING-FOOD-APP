@@ -54,7 +54,7 @@ function Register() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/register", { name, email, password, confirmPassword, profileImage })
+            const { data } = await axios.post("http://localhost:8090/register", { name, email, password, confirmPassword, profileImage },{withCredentials: true})
 
             if (data.error) {
                 toast.error(data.error)
@@ -63,7 +63,6 @@ function Register() {
             else {
                 setData({})
                 toast.success("Successfully registered!")
-                localStorage.setItem("token", data.data.token)
                 navigate("/login")
             }
 

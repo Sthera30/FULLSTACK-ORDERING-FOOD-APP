@@ -155,7 +155,7 @@ function ExploreMore() {
 
                             </div>
 
-                            {user?.user?.role === "admin" ? (<div className='update_container'>
+                            {user?.role === "admin" ? (<div className='update_container'>
 
 
                                 <div className='update_inner'>

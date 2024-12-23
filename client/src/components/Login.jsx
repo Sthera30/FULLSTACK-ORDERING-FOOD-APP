@@ -4,11 +4,15 @@ import '../css/login.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import {FaPizzaSlice} from 'react-icons/fa'
+import { FaPizzaSlice } from 'react-icons/fa'
+import { useUserContext } from '../context/userContext.jsx'
 
 function Login() {
 
     const [data, setData] = useState({ email: '', password: '' })
+
+    const { user, setUser } = useUserContext()
+
     const navigate = useNavigate()
 
     async function handle_login(e) {
@@ -19,15 +23,37 @@ function Login() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/login", { email, password }, {withCredentials: true})
+            const { data } = await axios.post("http://localhost:8090/login", { email, password }, { withCredentials: true })
 
             if (data.error) {
                 toast.error(data.error)
             }
 
             else {
-                setData({})
-                localStorage.setItem("token", data.data.token)
+
+
+                get_user_info()
+
+                async function get_user_info() {
+
+                    try {
+
+                        const res = await axios.get("http://localhost:8090/getUser", { withCredentials: true })
+
+                        if (res.data.success) {
+                            setUser(res.data.data.user)
+                        }
+
+                        else {
+                            console.log(`Nonpe!`)
+                        }
+
+                    } catch (error) {
+                        console.log(error);
+                    }
+
+                }
+
                 navigate("/")
             }
 
@@ -47,9 +73,9 @@ function Login() {
 
                 <div className='logo-container' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-                <FaPizzaSlice style={{ color: 'orange', fontSize: '2.6rem', marginBottom: '1rem' }} />
-                <span style={{fontSize:'2rem', maxWidth: '15rem', margin:'1.2rem 0rem', textAlign:'center'}}>Welcome to Taste Hub</span>
-                <p style={{color: '#333', fontWeight: '300', fontSize: '1rem'}}>Where food lovers unite </p>
+                    <FaPizzaSlice style={{ color: 'orange', fontSize: '2.6rem', marginBottom: '1rem' }} />
+                    <span style={{ fontSize: '2rem', maxWidth: '15rem', margin: '1.2rem 0rem', textAlign: 'center' }}>Welcome to Taste Hub</span>
+                    <p style={{ color: '#333', fontWeight: '300', fontSize: '1rem' }}>Where food lovers unite </p>
 
                 </div>
 
@@ -70,7 +96,7 @@ function Login() {
 
                         <div className='pass-right'>
 
-                            <NavLink style={{textDecoration: 'none'}} to={"/reset-password"}>
+                            <NavLink style={{ textDecoration: 'none' }} to={"/reset-password"}>
 
                                 <a href='#' style={{ marginBottom: '1rem', textDecoration: 'none', color: 'hsl(39, 93%, 47%)' }}>Forgot password ?</a>
 
@@ -83,7 +109,7 @@ function Login() {
 
                     <button type='submit' className='btnSignIn'>Sign In</button>
 
-                    <NavLink to={"/register"} style={{color: '#333', textDecoration: 'none'}}>Need an account? &nbsp; <span className='sign-up'>SIGN UP</span></NavLink>
+                    <NavLink to={"/register"} style={{ color: '#333', textDecoration: 'none' }}>Need an account? &nbsp; <span className='sign-up'>SIGN UP</span></NavLink>
 
                 </form>
 

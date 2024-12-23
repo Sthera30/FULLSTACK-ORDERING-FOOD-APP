@@ -56,7 +56,7 @@ export const registerUser = async (req, res) => {
             return res.json({ error: "email already exist!" })
         }
 
-        
+
 
         //generate otp
 
@@ -84,8 +84,13 @@ export const registerUser = async (req, res) => {
             const newUser = await userModel.create({ name, email, password: hashedPass, confirmPassword: hashedConfirmPass, otp: hashedOtp, profileImage })
 
 
-            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ email: newUser.email }, process.env.JWT_SECRET, {
                 expiresIn: "1d"
+            })
+
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: false
             })
 
             const transporter = nodeMail.createTransport({
@@ -93,7 +98,7 @@ export const registerUser = async (req, res) => {
                 service: "Gmail",
                 auth: {
                     user: "tinisthera@gmail.com",
-                    pass: "evhrsmudgmuasuxk"
+                    pass: "ciujhxhgrkwhbxml"
                 }
 
             })
@@ -145,19 +150,27 @@ export const authController = async (req, res) => {
 
     try {
 
-        const user = await userModel.findOne({ _id: req.body.userId })
+        //  console.log("Email in req.user:", req.user.email);
+
+        const user = await userModel.findOne({ email: req.user.email })
 
         if (!user) {
-            return res.status(200).json({ error: "user not found!" })
+            console.log("Hello!");
+            return res.status(200).json({ error: "user not found!", success: false })
+
         }
 
         else {
+
+
+            console.log("Hi");
+
             return res.status(200).json({
-                message: "user found", data: {
-                    user
-                },
-                success: true
+                message: 'user found!', success: true, data: {
+                    user: user
+                }
             })
+
         }
 
 
@@ -200,9 +213,13 @@ export const loginUser = async (req, res) => {
             return res.status(200).json({ error: "invalid login attempt!" })
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-
+        const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
             expiresIn: "1d"
+        })
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false
         })
 
         return res.status(200).json({
@@ -220,51 +237,69 @@ export const loginUser = async (req, res) => {
 
 }
 
+export const logout = async(req, res) => {
+
+    try {
+        
+
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: false
+        })
+
+        return res.status(200).json({message: 'logged out successfully', success: true})
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: 'Internal Server Error!', success: false})
+    }
+
+}
+
 export const verifyOtp = async (req, res) => {
 
+   
     const { otp, email } = req.body
+
+    if (!otp) {
+        return res.status(200).json({ error: 'OTP is required!', success: false })
+    }
+
+    if (otp.length != 6) {
+        return res.status(200).json({ error: 'OTP must be 6 digits!', success: false })
+    }
 
     try {
 
-        if (!otp) {
-            return res.status(200).json({ error: "otp is required!" })
+        const otp_ = await otpModel.findOne({ userEmail: email })
+
+        const user = await userModel.findOne({ email: email })
+
+        user.isVerified = true
+
+        await user.save()
+
+        // console.log(`Hello ${otp_}`);
+
+
+        const isMatch = await compareOtp(otp, otp_.otp)
+
+
+        if (!isMatch) {
+            return res.status(200).json({ error: 'OTP Do Not Match!', success: false })
         }
 
-        console.log(otp.length);
-        console.log(`Your otp is ${otp}`);
+        await otpModel.deleteOne({ otp: otp_.otp })
 
-        console.log(`Your email is ${email}`);
-
-
-        if (otp.length != 6) {
-            return res.status(200).json({ error: "otp must be 6 digits!" })
-
-        }
-
-        const user = await userModel.findOne({ email })
-
-
-        if (user.otp === Number(otp)) {
-            user.isVerified = true
-            await user.save()
-            return res.status(200).json({ message: "otp verified!", success: true })
-        }
-
-        else {
-
-            return res.status(200).json({ error: "invalid otp!", success: false })
-        }
-
-        //156056
-
-
+        return res.status(200).json({
+            message: 'OTP Verified!', success: true, data: {
+                otp_: otp_
+            }
+        })
 
     } catch (error) {
-
         console.log(error);
-        return res.status(500).json({ error: "otp failed!" })
-
-
+        return res.status(500).json({ error: 'Internal Server Error!' })
     }
 
 
@@ -692,7 +727,7 @@ export const handlePayFastITN = async (req, res) => {
             service: "Gmail",
             auth: {
                 user: "tinisthera@gmail.com",
-                pass: "evhrsmudgmuasuxk"
+                pass: "ciujhxhgrkwhbxml"
             }
         })
 
@@ -906,7 +941,7 @@ export const getGenOtp = async (req, res) => {
             auth: {
 
                 user: "tinisthera@gmail.com",
-                pass: "evhrsmudgmuasuxk"
+                pass: "ciujhxhgrkwhbxml"
             }
         })
 
@@ -919,10 +954,6 @@ export const getGenOtp = async (req, res) => {
         }
 
         transporter.sendMail(mailOptions, (err, info) => {
-
-            if (err) {
-                return res.status(200).json({ error: 'Failed sending an email!' })
-            }
 
             return res.status(200).json({ message: 'Email sent successfully' })
 
@@ -949,6 +980,128 @@ export const getGenOtp = async (req, res) => {
     }
 
 }
+
+
+/*
+
+
+
+export const verifyOtp = async (req, res) => {
+
+    const { otp, email } = req.body
+
+    if (!otp) {
+        return res.status(200).json({ error: 'OTP is required!', success: false })
+    }
+
+    if (otp.length != 6) {
+        return res.status(200).json({ error: 'OTP must be 6 digits!', success: false })
+    }
+
+    try {
+
+        const otp_ = await otpModel.findOne({ userEmail: email })
+
+        const user = await userModel.findOne({ email: email })
+
+        user.isVerified = true
+
+        await user.save()
+
+        // console.log(`Hello ${otp_}`);
+
+
+        const isMatch = await compareOtp(otp, otp_.otp)
+
+
+        if (!isMatch) {
+            return res.status(200).json({ error: 'OTP Do Not Match!', success: false })
+        }
+
+        await otpModel.deleteOne({ otp: otp_.otp })
+
+        return res.status(200).json({
+            message: 'OTP Verified!', success: true, data: {
+                otp_: otp_
+            }
+        })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ error: 'Internal Server Error!' })
+    }
+
+}
+export const verifyEmail = async (req, res) => {
+
+    const { email } = req.body
+
+    if (!email) {
+        return res.status(200).json({ error: 'Email is required!', success: false })
+    }
+
+    try {
+
+
+        const otpGen = genOTP.generate(6, {
+
+            digits: true,
+            upperCase: false,
+            lowerCase: false,
+            upperCaseAlphabets: false,
+            lowerCaseAlphabets: false,
+            specialChars: false
+
+        })
+
+        const hashedOtp = await hashOtp(otpGen)
+
+
+        const user_email = await userModel.findOne({ email })
+
+        if (!user_email) {
+            return res.status(200).json({ error: 'Please first register email address!', success: false })
+        }
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'tinisthera@gmail.com',
+                pass: 'ciujhxhgrkwhbxml'
+            }
+        })
+
+        const mailOptions = {
+            from: 'Kwanosportsclub team',
+            to: email,
+            subject: 'OTP Verification Code',
+            text: `${otpGen} is your verification code`
+        }
+
+       await transporter.sendMail(mailOptions)
+
+       await otpModel.create({ otp: hashedOtp, userEmail: email });
+
+        console.log(hashedOtp);
+
+        return res.status(200).json({
+            message: 'OTP sent to your email address!', success: true, data: {
+                user_email: user_email
+            }
+        })
+
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ error: 'Internal Server Error!' })
+    }
+
+
+}
+
+
+
+*/
 
 export const compareOtp = async (req, res) => {
 
@@ -2235,7 +2388,7 @@ export const edit_food = async (req, res) => {
     const { id, name, description, price, category, weight, foodImage, specificationName } = req.body
 
     console.log(id);
-    
+
 
     try {
 

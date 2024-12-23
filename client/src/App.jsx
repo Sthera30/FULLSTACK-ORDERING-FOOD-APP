@@ -45,7 +45,7 @@ function App() {
 
       <Route path={"/"} element={<Layout />}>
 
-        <Route index element={<Protected><HomePage /></Protected>} />
+        <Route index element={<HomePage />} />
         <Route path={'/login'} element={<LoginPage />} />
         <Route path={'/register'} element={<RegisterPage />} />
         <Route path={"/verify-otp"} element={<Protected><VerifyOtpPage /></Protected>} />
@@ -59,8 +59,8 @@ function App() {
         <Route path={"/checkout"} element={<Protected><CheckoutGuardPage /></Protected>} />
         <Route path={"/my-order"} element={<Protected><MyOrder /></Protected>} />
         <Route path={"/my-orders"} element={<Protected><MyOrders /></Protected>} />
-        <Route path={"/contact"} element={<ContactPage />} />
-        <Route path={"/conditions"} element={<ConditionsPage />} />
+        <Route path={"/contact"} element={ <ContactPage />} />
+        <Route path={"/conditions"} element={ <ConditionsPage />} />
         <Route path={"/policy"} element={<CookiePolicyPage />} />
         <Route path={"/reset-password"} element={<ForgotPasswordPage />} />
         <Route path={"/verify-code"} element={<VerifyOtpEmailPage />} />
@@ -74,7 +74,7 @@ function App() {
         <Route path={"/our-services"} element={<OurServicesPage />} />
         <Route path={"/manage-our-services"} element={<ManageOurServicesPage />} />
         <Route path={"/edit-our-promises/:id"} element={<EditOurServicesPage />} />
-        <Route path={"/about-us"} element={< AbouUsPage/>} />
+        <Route path={"/about-us"} element={< AbouUsPage />} />
         <Route path={"/manage-about-us"} element={<ManageAboutUsPage />} />
         <Route path={"/edit_about_us/:id"} element={<EditAboutUsPage />} />
         <Route path={"our-food"} element={<ExploreMorePage />} />

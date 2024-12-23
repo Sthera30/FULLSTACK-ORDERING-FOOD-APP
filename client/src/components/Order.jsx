@@ -40,9 +40,9 @@ function Order() {
 
             const { data } = await axios.post(`http://localhost:8090/order`, {
                 user: {
-                    _id: user?.user?._id,
-                    name: user?.user?.name,
-                    email: user?.user?.email
+                    _id: user?._id,
+                    name: user?.name,
+                    email: user?.email
                 },
                 items: orderItems,
                 totalAmount: grandtotal,
@@ -57,11 +57,12 @@ function Order() {
 
             },
 
-                {
+               /*{
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
+                    */
 
             )
 

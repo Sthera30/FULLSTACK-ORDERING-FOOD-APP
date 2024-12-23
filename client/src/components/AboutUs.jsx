@@ -374,7 +374,7 @@ function AboutUs() {
                     <span>{aboutUs[0]?.aboutUsHeading}</span>
                     <p>{aboutUs[0]?.aboutUsDescription}</p>
 
-                    {user?.user?.role === "admin" ? (
+                    {user?.role === "admin" ? (
 
                         <div className={`button-container ${isDeletedAboutUs ? "hide_" : ""}`}>
 
@@ -408,7 +408,7 @@ function AboutUs() {
                     <h3>{vision[0]?.visionHeading}</h3>
                     <p>{vision[0]?.visionDescription}</p>
 
-                    {user?.user?.role === "admin" ? (
+                    {user?.role === "admin" ? (
 
                         <div className='button-container'>
 
@@ -432,7 +432,7 @@ function AboutUs() {
                     <h3>{mission[0]?.missionHeading}</h3>
                     <p>{mission[0]?.missionDescription}</p>
 
-                    {user?.user?.role === "admin" ? (
+                    {user?.role === "admin" ? (
 
                         <div className='button-container'>
 
@@ -469,7 +469,7 @@ function AboutUs() {
                         <h3>{coreValue.valuesHeading}</h3>
                         <p>{coreValue.valuesDescription}</p>
 
-                        {user?.user?.role === "admin" ? (
+                        {user?.role === "admin" ? (
 
                             <div className='button-container'>
 

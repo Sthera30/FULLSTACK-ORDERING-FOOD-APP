@@ -104,7 +104,7 @@ function OurPromise() {
 
                             <div className='left-date'>
 
-                                {user?.user?.role === "admin" ? (
+                                {user?.role === "admin" ? (
                                     <NavLink className={"left-dat"} to={`/edit-promise/${promise._id}`} style={{ color: "#fff", textDecoration: 'none' }}>Edit</NavLink>
                                 ) : ("")}
 
@@ -112,7 +112,7 @@ function OurPromise() {
 
                             <div className='right-button'>
 
-                            {user?.user?.role === "admin" ? (
+                            {user?.role === "admin" ? (
                                 <button className='btnDelete' onClick={() => remove_promise(promise._id)}>Delete</button>
                                 ) : ("")}
 

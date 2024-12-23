@@ -6,40 +6,26 @@ import { useEffect } from "react";
 function Protected({ children }) {
 
 
-    const { user, setUser } = useUserContext()
+   const { user, setUser } = useUserContext()
     const navigate = useNavigate()
 
     const getUser = async () => {
 
         try {
 
-            const res = await axios.post("http://localhost:8090/getUser", {
-                token: localStorage.getItem("token")
-            },
-
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
-                    }
-                }
-
-            )
+            const res = await axios.get("http://localhost:8090/getUser", {withCredentials: true} )
 
             if (res.data.success) {
-                setUser(res.data.data)
-                
+                setUser(res.data.data.user)
             }
 
             else {
-                localStorage.clear()
+                setUser(null)
                 return navigate("/login")
             }
 
-
-
         } catch (error) {
             console.log(error);
-            localStorage.clear()
 
         }
 
@@ -53,15 +39,12 @@ function Protected({ children }) {
 
     }, [user])
 
-
-    if (localStorage.getItem("token")) {
-        return children
+    if(!user){
+        navigate("/login")
+        return null
     }
 
-    else {
-        localStorage.clear()
-        return navigate("/login")
-    }
+    return children
 
 
 }

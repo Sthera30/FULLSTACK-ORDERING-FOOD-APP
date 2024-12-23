@@ -204,3 +204,10 @@
     padding: .5rem 1rem;
     border-radius: .5rem;
   }
+
+  .btnlogout{
+    color: #fff;
+    background: blue;
+    border-radius: 3rem;
+    cursor: pointer;
+  }

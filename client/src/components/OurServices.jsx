@@ -100,12 +100,12 @@ function OurServices() {
 
                         <div className='btn-container'>
 
-                            {user?.user?.role === "admin" ? (
+                            {user?.role === "admin" ? (
                                 <NavLink to={`/edit-our-promises/${service._id}`} className='btn_edit'>Edit</NavLink>
 
                             ) : ""}
 
-                            {user?.user?.role === "admin" ? (
+                            {user?.role === "admin" ? (
                                 <button onClick={() => handle_delete(service._id)} className='btn_delete'>Delete</button>
 
                             ) : ""}

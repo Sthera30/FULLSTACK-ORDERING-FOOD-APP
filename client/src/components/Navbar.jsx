@@ -8,6 +8,8 @@ import { useUserContext } from '../context/userContext.jsx'
 import { FaCartPlus, FaPizzaSlice } from 'react-icons/fa'
 import { useCartContext } from '../context/cartContext.jsx'
 import { XIcon } from 'lucide-react'
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 function Navbar() {
 
@@ -31,6 +33,27 @@ function Navbar() {
         return () => clearInterval(interval);
     }, []);
 
+
+    async function handle_logout() {
+
+        try {
+
+            const res = await axios.post(`http://localhost:8090/logout`, {}, { withCredentials: true })
+
+            if (res.data.success) {
+                setUser(null)
+                navigate("/login")
+            }
+
+            else {
+                toast.error(res.data.error)
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
 
     return (
@@ -62,14 +85,14 @@ function Navbar() {
 
                 <div className={`right-bar default ${showNav ? "hide" : "show"}`}>
 
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Home'? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={""}>Home</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Our Promise'? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-promise"}>Our Promise</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Service"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-services"}>Our Service</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Food"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-food"}>Our Food</NavLink>
+                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Home' ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={""}>Home</NavLink>
+                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Our Promise' ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-promise"}>Our Promise</NavLink>
+                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Service" ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-services"}>Our Service</NavLink>
+                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Food" ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-food"}>Our Food</NavLink>
 
-                    {user?.user?.role === "admin" ? <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our food"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/add-food"}>Add food</NavLink> : ""}
+                    {user?.role === "admin" ? <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our food" ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/add-food"}>Add food</NavLink> : ""}
 
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Contact"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/contact"}>Contact</NavLink>
+                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Contact" ? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/contact"}>Contact</NavLink>
 
 
                 </div>
@@ -85,7 +108,7 @@ function Navbar() {
 
                         </a>
 
-                        <div className={`${user?.user?.role == "admin"? "count-cart": user?.user?.role === "user"? "count-cart" : "cart_position"}`}>
+                        <div className={`${user?.role == "admin" ? "count-cart" : user?.role === "user" ? "count-cart" : "cart_position"}`}>
 
                             <span>{cartItems.length}</span>
 
@@ -111,7 +134,7 @@ function Navbar() {
                     {user ? (
                         <a href="#" className='profile'>
 
-                            <img src={user?.user?.profileImage || imgProfile} style={{ width: '2rem', height: '2rem', objectFit: 'cover', borderRadius: '50%', marginLeft: '.8rem' }} alt="" onClick={() => setShowProfile(prev => !prev)} />
+                            <img src={user?.profileImage || imgProfile} style={{ width: '2rem', height: '2rem', objectFit: 'cover', borderRadius: '50%', marginLeft: '.8rem' }} alt="" onClick={() => setShowProfile(prev => !prev)} />
 
                             <div className={`profile_container showProfile ${showProfile ? "showProfile" : "hideProfile"}`}>
 
@@ -123,23 +146,18 @@ function Navbar() {
                                 </div>
 
                                 <NavLink style={{ textDecoration: 'none' }} to={"/my-order"}>My Order</NavLink>
-                                {user?.user?.role === "admin" ?
+                                {user?.role === "admin" ?
 
                                     <NavLink style={{ textDecoration: 'none' }} to={"/my-orders"}>All Orders</NavLink> : ""
 
                                 }
 
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-promise"}>Manage Our Promise</NavLink>) : ""}
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-our-services"}>Manage Our Services</NavLink>) : ""}
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-about-us"}>Manage About Us</NavLink>) : ""}
+                                {user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-promise"}>Manage Our Promise</NavLink>) : ""}
+                                {user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-our-services"}>Manage Our Services</NavLink>) : ""}
+                                {user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-about-us"}>Manage About Us</NavLink>) : ""}
 
                                 <NavLink style={{ textDecoration: 'none' }}>Settings</NavLink>
-                                <a onClick={() => {
-                                    localStorage.clear()
-                                    navigate("/login")
-                                    location.reload()
-
-                                }}>Logout</a>
+                                <button className='btnlogout' onClick={handle_logout}>Logout</button>
 
                             </div>
 
@@ -149,6 +167,8 @@ function Navbar() {
                         <NavLink style={{ textDecoration: 'none' }} to={"/login"} className='btnLogin'>Login</NavLink>
 
                     )}
+
+
 
                 </div>
 

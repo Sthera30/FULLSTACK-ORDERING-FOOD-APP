@@ -93,7 +93,7 @@ function OrderDetails() {
 
                         <div className='hub-right'>
 
-                            <NavLink to={"/explore-more"} className='btnExploreHub'>Explore More Dishes</NavLink>
+                            <NavLink style={{textDecoration: 'none'}} to={"/our-food"} className='btnExploreHub'>Explore More Dishes</NavLink>
 
                         </div>
 

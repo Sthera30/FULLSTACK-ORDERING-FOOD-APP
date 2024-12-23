@@ -90,7 +90,7 @@ function NewFood() {
 
                         </div>
 
-                        {user?.user?.role === "admin" ? (
+                        {user?.role === "admin" ? (
                             <div className='update_container'>
 
 
