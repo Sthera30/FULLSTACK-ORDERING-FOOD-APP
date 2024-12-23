@@ -38,7 +38,7 @@ function Order() {
 
             }))
 
-            const { data } = await axios.post(`http://https://fullstack-ordering-food-backend-app.onrender.com/order`, {
+            const { data } = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.comorder`, {
                 user: {
                     _id: user?._id,
                     name: user?.name,

@@ -23,7 +23,7 @@ function Register() {
 
         try {
 
-            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/upload", formData)
+            const { data } = await axios.post("https://fullstack-ordering-food-backend-app.onrender.comupload", formData)
 
             setUploading(false)
 
@@ -54,7 +54,7 @@ function Register() {
 
         try {
 
-            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/register", { name, email, password, confirmPassword, profileImage },{withCredentials: true})
+            const { data } = await axios.post("https://fullstack-ordering-food-backend-app.onrender.comregister", { name, email, password, confirmPassword, profileImage },{withCredentials: true})
 
             if (data.error) {
                 toast.error(data.error)

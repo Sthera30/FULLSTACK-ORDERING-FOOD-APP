@@ -21,7 +21,7 @@ function ChangePassword() {
 
         try {
 
-            const { data } = await axios.post('http://https://fullstack-ordering-food-backend-app.onrender.com/changePassword', { Is_verified, email, password, confirmPassword })
+            const { data } = await axios.post('https://fullstack-ordering-food-backend-app.onrender.comchangePassword', { Is_verified, email, password, confirmPassword })
 
             if (data.success) {
                 toast.success(data.message)

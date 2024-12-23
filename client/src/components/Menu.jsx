@@ -65,7 +65,7 @@ function Menu() {
 
     try {
 
-      const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/getAll?category=${value}`)
+      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetAll?category=${value}`)
 
       if (res.data.success) {
 

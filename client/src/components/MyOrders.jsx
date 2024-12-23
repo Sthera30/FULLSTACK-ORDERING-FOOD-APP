@@ -27,7 +27,7 @@ function MyOrders() {
 
     try {
 
-      const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/getAddressByOrder`, { params: { id } })
+      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetAddressByOrder`, { params: { id } })
 
       if (res.data.success) {
         setAddressDetails(res.data.data.address)
@@ -54,7 +54,7 @@ function MyOrders() {
 
     try {
 
-      const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/filterStatus?status=${status}`)
+      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comfilterStatus?status=${status}`)
 
       if (res.data.success) {
         setOrders(res.data.data.paymentStatus)
@@ -76,7 +76,7 @@ function MyOrders() {
     try {
 
 
-      const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/filterPrice?priceRange=${price}`)
+      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comfilterPrice?priceRange=${price}`)
 
       if (res.data.success) {
         setOrders(res.data.data.priceFilter)
@@ -99,7 +99,7 @@ function MyOrders() {
 
     try {
 
-      const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/filterDate?startDate=${startDate}&endDate=${endDate}`)
+      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comfilterDate?startDate=${startDate}&endDate=${endDate}`)
 
       if (res.data.success) {
         setOrders(res.data.data.dateFilter)
