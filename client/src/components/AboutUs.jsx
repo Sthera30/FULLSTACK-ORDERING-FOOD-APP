@@ -160,7 +160,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.get("http://localhost:8090/getAboutUs")
+            const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/getAboutUs")
 
             if (res.data.success) {
                 setAboutUs(res.data.data.about_us)
@@ -182,7 +182,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.get("http://localhost:8090/getMission")
+            const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/getMission")
 
             if (res.data.success) {
                 setMission(res.data.data.mission)
@@ -204,7 +204,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.get("http://localhost:8090/getVision")
+            const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/getVision")
 
             if (res.data.success) {
                 setVision(res.data.data.vision)
@@ -226,7 +226,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.get("http://localhost:8090/getValues")
+            const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/getValues")
 
             if (res.data.success) {
                 setCoreValues(res.data.data.values)
@@ -249,7 +249,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.delete(`http://localhost:8090/remove_about_us?id=${id}`)
+            const res = await axios.delete(`http://https://fullstack-ordering-food-backend-app.onrender.com/remove_about_us?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)
@@ -273,7 +273,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.delete(`http://localhost:8090/remove_mission?id=${id}`)
+            const res = await axios.delete(`http://https://fullstack-ordering-food-backend-app.onrender.com/remove_mission?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)
@@ -297,7 +297,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.delete(`http://localhost:8090/remove_vision?id=${id}`)
+            const res = await axios.delete(`http://https://fullstack-ordering-food-backend-app.onrender.com/remove_vision?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)
@@ -321,7 +321,7 @@ function AboutUs() {
 
         try {
 
-            const res = await axios.delete(`http://localhost:8090/remove_values?id=${id}`)
+            const res = await axios.delete(`http://https://fullstack-ordering-food-backend-app.onrender.com/remove_values?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)

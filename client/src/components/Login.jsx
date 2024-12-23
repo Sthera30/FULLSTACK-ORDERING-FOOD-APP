@@ -23,7 +23,7 @@ function Login() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/login", { email, password }, { withCredentials: true })
+            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/login", { email, password }, { withCredentials: true })
 
             if (data.error) {
                 toast.error(data.error)
@@ -38,7 +38,7 @@ function Login() {
 
                     try {
 
-                        const res = await axios.get("http://localhost:8090/getUser", { withCredentials: true })
+                        const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/getUser", { withCredentials: true })
 
                         if (res.data.success) {
                             setUser(res.data.data.user)

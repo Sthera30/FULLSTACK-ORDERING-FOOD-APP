@@ -20,7 +20,7 @@ function VerifyOtpEmail() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/compareOtp", { otp, email })
+            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/compareOtp", { otp, email })
 
             if (data.error) {
                 toast.error(data.error)

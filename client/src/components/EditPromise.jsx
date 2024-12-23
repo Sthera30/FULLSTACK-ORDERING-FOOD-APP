@@ -19,7 +19,7 @@ function EditPromise() {
 
         try {
 
-            const { data } = await axios.put(`http://localhost:8090/editPromise`, { id, title, description })
+            const { data } = await axios.put(`http://https://fullstack-ordering-food-backend-app.onrender.com/editPromise`, { id, title, description })
 
             if (data.success) {
                 toast.success(data.message)
@@ -41,7 +41,7 @@ function EditPromise() {
 
         try {
 
-            const { data } = await axios.get(`http://localhost:8090/getPromiseById`, { params: {
+            const { data } = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/getPromiseById`, { params: {
                 id
             } })
 

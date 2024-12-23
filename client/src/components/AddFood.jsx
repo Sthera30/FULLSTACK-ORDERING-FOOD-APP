@@ -23,7 +23,7 @@ function AddFood() {
         try {
 
 
-            const response = await axios.post('http://localhost:8090/upload', formData)
+            const response = await axios.post('http://https://fullstack-ordering-food-backend-app.onrender.com/upload', formData)
 
             setUpload(false)
 
@@ -63,7 +63,7 @@ function AddFood() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/add", { name, description, price, category, weight, foodImage, specificationName },
+            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/add", { name, description, price, category, weight, foodImage, specificationName },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`

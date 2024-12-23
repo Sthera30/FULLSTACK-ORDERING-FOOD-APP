@@ -38,7 +38,7 @@ function Navbar() {
 
         try {
 
-            const res = await axios.post(`http://localhost:8090/logout`, {}, { withCredentials: true })
+            const res = await axios.post(`http://https://fullstack-ordering-food-backend-app.onrender.com/logout`, {}, { withCredentials: true })
 
             if (res.data.success) {
                 setUser(null)

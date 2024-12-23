@@ -25,7 +25,7 @@ function ManageOurServices() {
 
         try {
 
-            const { data } = await axios.post('http://localhost:8090/addOurServices', { ourServiceHeading, ourServiceDescription, ourServiceImage })
+            const { data } = await axios.post('http://https://fullstack-ordering-food-backend-app.onrender.com/addOurServices', { ourServiceHeading, ourServiceDescription, ourServiceImage })
 
             if (data.success) {
                 toast.success(data.message)
@@ -54,7 +54,7 @@ function ManageOurServices() {
 
         try {
 
-            const { data } = await axios.post('http://localhost:8090/upload', formData)
+            const { data } = await axios.post('http://https://fullstack-ordering-food-backend-app.onrender.com/upload', formData)
 
             setImage({
 

@@ -19,7 +19,7 @@ function ManageOurPromise() {
 
         try {
 
-            const { data } = await axios.post(`http://localhost:8090/addPromise`, { title, description })
+            const { data } = await axios.post(`http://https://fullstack-ordering-food-backend-app.onrender.com/addPromise`, { title, description })
 
             if (data.success) {
                 toast.success(data.message)

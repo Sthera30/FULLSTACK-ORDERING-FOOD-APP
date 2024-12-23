@@ -24,7 +24,7 @@ function Profile() {
 
         try {
 
-            const { data } = await axios.post("http://localhost:8090/upload", formData)
+            const { data } = await axios.post("http://https://fullstack-ordering-food-backend-app.onrender.com/upload", formData)
 
             setImage({
 
@@ -63,7 +63,7 @@ function Profile() {
 
         try {
 
-            const { data } = await axios.put('http://localhost:8090/updateProfile', { name, email, country, state, city, zipCode, profileImage, userId: user?._id })
+            const { data } = await axios.put('http://https://fullstack-ordering-food-backend-app.onrender.com/updateProfile', { name, email, country, state, city, zipCode, profileImage, userId: user?._id })
 
             if (data.success) {
                 toast.success("successfully updated!")

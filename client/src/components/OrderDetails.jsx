@@ -14,7 +14,7 @@ function OrderDetails() {
 
         try {
 
-            const res = await axios.get(`http://localhost:8090/GetOrderById?id=${id}`)
+            const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/GetOrderById?id=${id}`)
 
             if (res.data.success) {
 

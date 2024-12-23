@@ -29,7 +29,7 @@ function ExploreMore() {
 
         try {
 
-            const res = await axios.get("http://localhost:8090/allFood")
+            const res = await axios.get("http://https://fullstack-ordering-food-backend-app.onrender.com/allFood")
 
             if (res.data.success) {
                 setFood(res.data.data.all_food)
@@ -63,7 +63,7 @@ function ExploreMore() {
                 return
             }
 
-            const res = await axios.get(`http://localhost:8090/foodSearch?term=${searchTerm}`)
+            const res = await axios.get(`http://https://fullstack-ordering-food-backend-app.onrender.com/foodSearch?term=${searchTerm}`)
 
             if (res.data.success) {
                 setFood(res.data.data.food)
@@ -87,7 +87,7 @@ function ExploreMore() {
 
         try {
 
-            const res = await axios.delete(`http://localhost:8090/delete_food?id=${id}`)
+            const res = await axios.delete(`http://https://fullstack-ordering-food-backend-app.onrender.com/delete_food?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)
