@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import img4 from '../assets/side-view-woman-paying-with-card.png'
-import '../css/ourServices.css'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { NavLink } from 'react-router-dom'
 import { useUserContext } from '../context/userContext'
+import '../css/servicesS.css'
+
 
 function OurServices() {
 
