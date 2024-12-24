@@ -643,8 +643,8 @@ export const createOrder = async (req, res) => {
             email_address: user.email,
             custom_str1: savedOrder._id.toString(), // Pass the order ID to PayFast as reference
             notify_url: 'https://6c37-102-214-117-92.ngrok-free.app/payfast-itn',  // This is your ngrok URL for ITN
-            return_url: 'http://localhost:5173/success',
-            cancel_url: 'http://localhost:5173/cancel',
+            return_url: 'https://fullstack-ordering-food-frontend-app.onrender.com/success',
+            cancel_url: 'https://fullstack-ordering-food-frontend-app.onrender.com/cancel',
             payment_method: 'dc',
             currency: 'ZAR'
         };
