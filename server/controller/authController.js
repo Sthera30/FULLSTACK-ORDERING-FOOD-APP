@@ -90,8 +90,8 @@ export const registerUser = async (req, res) => {
 
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'Strict'
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: process.env.NODE_ENV === 'production'? 'None' : 'Lax'
             })
 
             const transporter = nodeMail.createTransport({
@@ -220,8 +220,8 @@ export const loginUser = async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'Strict'
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production'? 'None' : "Lax"
         })
 
         return res.status(200).json({
