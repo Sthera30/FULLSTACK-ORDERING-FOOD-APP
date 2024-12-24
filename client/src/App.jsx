@@ -36,6 +36,7 @@ import EditAboutUsPage from "./pages/EditAboutUsPage.jsx";
 import ExploreMorePage from './pages/ExploreMorePage.jsx'
 import CheckoutGuardPage from "./pages/CheckoutGuardPage.jsx";
 import EditFoodPage from './pages/EditFoodPage.jsx'
+import './css/our-service-section.css'
 
 function App() {
 
