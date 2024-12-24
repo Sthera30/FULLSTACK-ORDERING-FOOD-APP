@@ -82,6 +82,72 @@
     background: red;
 }
 
+.our-services-container {
+    display: flex !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 5rem !important;
+}
+
+.our-services-container .our-services-box {
+    flex: 1 1 30rem !important;
+    border: .1rem solid hsl(0, 6%, 80%) !important;
+    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .2) !important;
+    padding: 2rem !important;
+    height: 50rem !important;
+    margin-bottom: 3rem !important;
+    overflow: hidden !important;
+}
+
+.our-services-container .our-services-box p {
+    line-height: 1.6 !important;
+    max-width: 70rem !important;
+}
+
+.our-services-container .our-services-box img {
+
+    width: 30rem !important;
+    height: 50% !important;
+    object-fit: contain !important;
+    border-radius: 3rem !important;
+    margin: 5rem auto !important;
+    text-align: center !important;
+
+}
+
+.img-containers{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+.btn-container {
+    margin-top: -8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: -4rem !important;
+    gap: 1rem !important;
+}
+
+.btn_edit {
+    color: #fff !important;
+    background: hsl(39, 95%, 45%) !important;
+    padding: .8rem 2rem !important;
+    border-radius: 3rem !important;
+    text-decoration: none !important;
+}
+
+.btn_delete {
+    color: #fff !important;
+    background: hsl(0, 97%, 47%) !important;
+    padding: .8rem 2rem !important;
+    border-radius: 3rem !important;
+    text-decoration: none !important;
+}
+
 /*
 
 Unique & Seasonal Offerings 
