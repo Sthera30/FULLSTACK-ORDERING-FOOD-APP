@@ -37,7 +37,6 @@ const allowedOrigins = [
         "http://localhost:5173", 
         "https://fullstack-ordering-food-frontend-app.onrender.com" 
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true 
 };
 
