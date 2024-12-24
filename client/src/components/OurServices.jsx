@@ -4,7 +4,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { NavLink } from 'react-router-dom'
 import { useUserContext } from '../context/userContext'
-import '../css/servicesS.css'
+import '../css/ourService.css'
 
 
 function OurServices() {
