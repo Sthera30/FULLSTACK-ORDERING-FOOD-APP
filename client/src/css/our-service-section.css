@@ -1,65 +1,65 @@
 .our-services-container {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 5rem;
+    display: flex !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 5rem !important;
 }
 
 .our-services-container .our-services-box {
-    flex: 1 1 30rem;
-    border: .1rem solid hsl(0, 6%, 80%);
-    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .2);
-    padding: 2rem;
-    height: 50rem;
-    margin-bottom: 3rem;
-    overflow: hidden;
+    flex: 1 1 30rem !important;
+    border: .1rem solid hsl(0, 6%, 80%) !important;
+    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .2) !important;
+    padding: 2rem !important;
+    height: 50rem !important;
+    margin-bottom: 3rem !important;
+    overflow: hidden !important;
 }
 
 .our-services-container .our-services-box p {
-    line-height: 1.6;
-    max-width: 70rem;
+    line-height: 1.6 !important;
+    max-width: 70rem !important;
 }
 
 .our-services-container .our-services-box img {
 
-    width: 30rem;
-    height: 50%;
-    object-fit: contain;
-    border-radius: 3rem;
+    width: 30rem !important;
+    height: 50% !important;
+    object-fit: contain !important;
+    border-radius: 3rem !important;
     margin: 5rem auto !important;
-    text-align: center;
+    text-align: center !important;
 
 }
 
 .img-containers{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 
 .btn-container {
-    margin-top: -8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -4rem;
-    gap: 1rem;
+    margin-top: -8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: -4rem !important;
+    gap: 1rem !important;
 }
 
 .btn_edit {
-    color: #fff;
-    background: hsl(39, 95%, 45%);
-    padding: .8rem 2rem;
-    border-radius: 3rem;
-    text-decoration: none;
+    color: #fff !important;
+    background: hsl(39, 95%, 45%) !important;
+    padding: .8rem 2rem !important;
+    border-radius: 3rem !important;
+    text-decoration: none !important;
 }
 
 .btn_delete {
-    color: #fff;
-    background: hsl(0, 97%, 47%);
-    padding: .8rem 2rem;
-    border-radius: 3rem;
-    text-decoration: none;
+    color: #fff !important;
+    background: hsl(0, 97%, 47%) !important;
+    padding: .8rem 2rem !important;
+    border-radius: 3rem !important;
+    text-decoration: none !important;
 }
