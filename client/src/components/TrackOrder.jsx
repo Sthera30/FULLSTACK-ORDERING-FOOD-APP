@@ -17,7 +17,7 @@ function TrackOrder() {
 
     try {
 
-      const res = await axios.get("https://fullstack-ordering-food-backend-app.onrender.comGetOrderById", {
+      const res = await axios.get("https://fullstack-ordering-food-backend-app.onrender.com/GetOrderById", {
         params: { id }
       })
 

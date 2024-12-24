@@ -25,7 +25,7 @@ function SpecialFood() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetProductsFromDistinctCategory`)
+            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getProductsFromDistinctCategory`)
 
             if (res.data.success) {
 
@@ -43,7 +43,7 @@ function SpecialFood() {
 
         try {
 
-            const res = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.comdelete_food?id=${id}`)
+            const res = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.com/delete_food?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)

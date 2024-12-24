@@ -20,7 +20,7 @@ function ForgotPassword() {
         try {
 
 
-            const res = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.comgetOtp`, { email })
+            const res = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.com/getOtp`, { email })
 
 
             if (res.data.error) {

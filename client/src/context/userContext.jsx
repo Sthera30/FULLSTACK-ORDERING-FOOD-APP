@@ -14,7 +14,7 @@ export function UserContextProvider({ children }) {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetUser`, { withCredentials: true })
+            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getUser`, { withCredentials: true })
 
             if (res.data.success) {
                 setUser(res.data.data.user)

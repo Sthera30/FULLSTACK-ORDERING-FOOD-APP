@@ -21,7 +21,7 @@ function EditFood() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetFoodById?id=${id}`)
+            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getFoodById?id=${id}`)
 
             if (res.data.success) {
                 setData(res.data.data.get_food)
@@ -50,7 +50,7 @@ function EditFood() {
 
         try {
 
-            const res = await axios.put(`https://fullstack-ordering-food-backend-app.onrender.comedit_food`, { id, name, description, price, category, weight, foodImage, specificationName })
+            const res = await axios.put(`https://fullstack-ordering-food-backend-app.onrender.com/edit_food`, { id, name, description, price, category, weight, foodImage, specificationName })
 
             if (res.data.success) {
                 toast.success(res.data.message)
@@ -80,7 +80,7 @@ function EditFood() {
 
         try {
 
-            const { data } = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.comupload`, formData)
+            const { data } = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.com/upload`, formData)
 
             setImage({
                 url: data.url,

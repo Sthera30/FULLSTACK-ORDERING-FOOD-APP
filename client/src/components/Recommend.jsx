@@ -22,7 +22,7 @@ function Recommend() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetTopRated`)
+            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getTopRated`)
 
             if (res.data.success) {
                 setRecommend(res.data.data.food)
@@ -38,7 +38,7 @@ function Recommend() {
 
         try {
 
-            const res = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.comdelete_food?id=${id}`)
+            const res = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.com/delete_food?id=${id}`)
 
             if (res.data.success) {
                 toast.success(res.data.message)

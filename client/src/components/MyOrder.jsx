@@ -47,7 +47,7 @@ function MyOrder() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.comgetOrderByUser`, {
+            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getOrderByUser`, {
                 params: { userId }
             })
 

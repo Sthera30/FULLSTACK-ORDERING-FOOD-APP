@@ -16,7 +16,7 @@ function OurServices() {
 
         try {
 
-            const res = await axios.get('https://fullstack-ordering-food-backend-app.onrender.comgetOurServices')
+            const res = await axios.get('https://fullstack-ordering-food-backend-app.onrender.com/getOurServices')
 
             if (res.data.success) {
                 setServices(res.data.data.our_services)
@@ -36,7 +36,7 @@ function OurServices() {
 
         try {
 
-            const { data } = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.comremoveOurServices?id=${id}`)
+            const { data } = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.com/removeOurServices?id=${id}`)
 
             if (data.success) {
                 toast.success(data.message)
