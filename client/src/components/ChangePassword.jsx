@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function ChangePassword() {
 
 
-    const [data, setData] = useState({ isVerified: localStorage.getItem("isVerified"), email: localStorage.getItem("email"), password: '', confirmPassword: '' })
+    const [data, setData] = useState({ isVerified: localStorage.getItem("Is_verified"), email: localStorage.getItem("email"), password: '', confirmPassword: '' })
 
     const navigate = useNavigate()
 
@@ -52,9 +52,9 @@ function ChangePassword() {
                         <h2 style={{textAlign: 'center', marginBottom:'.5rem'}}>Change Password</h2>
                         <p style={{textAlign: 'center', color: '#333', fontWeight: '300', marginBottom: '2.5rem'}}>Please enter your current and new password</p>
 
-                        <span>Current password</span>
-                        <input type="password" name='password' style={{width: '100%'}} placeholder='Enter current password' onChange={(e) => setData({ ...data, password: e.target.value })} />
                         <span>New password</span>
+                        <input type="password" name='password' style={{width: '100%'}} placeholder='Enter current password' onChange={(e) => setData({ ...data, password: e.target.value })} />
+                        <span>Confirm password</span>
                         <input type="password" name='password'  style={{width: '100%'}} placeholder='Enter new password' onChange={(e) => setData({ ...data, confirmPassword: e.target.value })} />
                         <button type='submit'>Update password</button>
 

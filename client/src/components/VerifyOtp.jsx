@@ -60,7 +60,7 @@ function VerifyOtp() {
                     <div className='button-co'>
                         <input type="number" placeholder='Enter Your Code' onChange={(e) => setData({ ...data, otp: e.target.value })} />
                         <input type='hidden' placeholder='Enter your email' value={user?.email} />
-                        <button type='submit'>Verify Account</button>
+                        <button type='submit'>Verify Code</button>
                     </div>
 
                 </form>
