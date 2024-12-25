@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function ChangePassword() {
 
 
-    const [data, setData] = useState({ Is_verified: localStorage.getItem("Is_verified"), email: localStorage.getItem("email"), password: '', confirmPassword: '' })
+    const [data, setData] = useState({ isVerified: localStorage.getItem("isVerified"), email: localStorage.getItem("email"), password: '', confirmPassword: '' })
 
     const navigate = useNavigate()
 
@@ -16,12 +16,12 @@ function ChangePassword() {
 
         e.preventDefault()
 
-        const { Is_verified, email, password, confirmPassword } = data
+        const { isVerified, email, password, confirmPassword } = data
 
 
         try {
 
-            const { data } = await axios.post('https://fullstack-ordering-food-backend-app.onrender.com//changePassword', { Is_verified, email, password, confirmPassword })
+            const { data } = await axios.post('https://fullstack-ordering-food-backend-app.onrender.com//changePassword', { isVerified, email, password, confirmPassword })
 
             if (data.success) {
                 toast.success(data.message)

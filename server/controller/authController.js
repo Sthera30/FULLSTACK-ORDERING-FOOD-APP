@@ -1165,7 +1165,7 @@ export const changePassword = async (req, res) => {
 
     try {
 
-        const { Is_verified, email, password, confirmPassword } = req.body
+        const { isVerified, email, password, confirmPassword } = req.body
 
 
         if (!password) {
@@ -1186,7 +1186,7 @@ export const changePassword = async (req, res) => {
 
         const user = await otpModel.findOne({ email })
 
-        if (Is_verified) {
+        if (isVerified) {
 
             if (password === confirmPassword) {
 

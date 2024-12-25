@@ -10,7 +10,7 @@ function VerifyOtp() {
 
     const { user } = useUserContext()
 
-    const [data, setData] = useState({ otp: '', email: `${user?.user?.email}` })
+    const [data, setData] = useState({ otp: '', email: `${user?.email}` })
 
     const navigate = useNavigate()
 
@@ -30,6 +30,7 @@ function VerifyOtp() {
 
             else {
                 toast.success("otp verified!")
+                localStorage.setItem("isVerified", user?.isVerified)
                 navigate("/")
                 location.reload()
 
@@ -58,7 +59,7 @@ function VerifyOtp() {
 
                     <div className='button-co'>
                         <input type="number" placeholder='Enter Your Code' onChange={(e) => setData({ ...data, otp: e.target.value })} />
-                        <input type='hidden' placeholder='Enter your email' value={user?.user?.email} />
+                        <input type='hidden' placeholder='Enter your email' value={user?.email} />
                         <button type='submit'>Verify Account</button>
                     </div>
 
