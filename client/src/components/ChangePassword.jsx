@@ -21,7 +21,7 @@ function ChangePassword() {
 
         try {
 
-            const { data } = await axios.put('https://fullstack-ordering-food-backend-app.onrender.com//changePassword', { isVerified, email, password, confirmPassword })
+            const { data } = await axios.put('https://fullstack-ordering-food-backend-app.onrender.com/changePassword', { isVerified, email, password, confirmPassword })
 
             if (data.success) {
                 toast.success(data.message)
@@ -71,3 +71,4 @@ function ChangePassword() {
 }
 
 export default ChangePassword
+
