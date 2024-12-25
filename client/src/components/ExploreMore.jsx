@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { FaSearch, FaUtensils } from 'react-icons/fa'
-import '../css/exploreMore.css'
 import Img1 from '../assets/medium-shot-man-cooking.png'
 import Img2 from '../assets/dessert2.png'
 import Img3 from '../assets/dessert3.png'
@@ -14,6 +13,7 @@ import { toast } from 'react-hot-toast'
 import { useCartContext } from '../context/cartContext.jsx'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { useUserContext } from '../context/userContext.jsx'
+import '../css/ourPromise.css'
 
 function ExploreMore() {
 
