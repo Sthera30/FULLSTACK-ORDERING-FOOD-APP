@@ -90,7 +90,7 @@ app.post("/getOtp", getGenOtp)
 
 app.post('/compareOtp', compareOtp)
 
-app.post("/changePassword", changePassword)
+app.put("/changePassword", changePassword)
 
 app.post("/payfast-itn", handlePayFastITN)
 
