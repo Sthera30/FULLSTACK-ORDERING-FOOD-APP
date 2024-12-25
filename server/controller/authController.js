@@ -912,6 +912,11 @@ export const getGenOtp = async (req, res) => {
 
     try {
 
+
+        if (!email) {
+            return res.status(200).json({ error: 'email is required!' })
+        }
+
         const user = await userModel.findOne({ email })
 
         if (!user) {
@@ -921,9 +926,6 @@ export const getGenOtp = async (req, res) => {
         // check if there is an existing otp
 
 
-        if (!email) {
-            return res.status(200).json({ error: 'email is required!' })
-        }
 
 
 
