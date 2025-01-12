@@ -13,7 +13,7 @@ function UserOrderDetails() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/GetOrderById?id=${id}`)
+            const res = await axios.get(`https://fullstack-ordering-food-app-backend.vercel.app/GetOrderById?id=${id}`)
 
             if (res.data.success) {
                 setOrderDetails(res.data.data.order)
@@ -39,7 +39,7 @@ function UserOrderDetails() {
 
         try {
 
-            const res = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.com/updateShippingStatus`, { id, shippingStatus })
+            const res = await axios.post(`https://fullstack-ordering-food-app-backend.vercel.app/updateShippingStatus`, { id, shippingStatus })
 
             if (res.data.success) {
                 toast.success(res.data.message)

@@ -17,7 +17,7 @@ function OurPromise() {
 
         try {
 
-            const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getPromise`)
+            const res = await axios.get(`https://fullstack-ordering-food-app-backend.vercel.app/getPromise`)
 
             if (res.data.success) {
                 setPromises(res.data.data.our_promise);
@@ -39,7 +39,7 @@ function OurPromise() {
 
         try {
 
-            const { data } = await axios.delete(`https://fullstack-ordering-food-backend-app.onrender.com/removePromise?id=${id}`)
+            const { data } = await axios.delete(`https://fullstack-ordering-food-app-backend.vercel.app/removePromise?id=${id}`)
 
             if (data.success) {
                 toast.success(data.message)

@@ -23,7 +23,7 @@ function AddFood() {
         try {
 
 
-            const response = await axios.post('https://fullstack-ordering-food-backend-app.onrender.com/upload', formData)
+            const response = await axios.post('https://fullstack-ordering-food-app-backend.vercel.app/upload', formData)
 
             setUpload(false)
 
@@ -63,7 +63,7 @@ function AddFood() {
 
         try {
 
-            const { data } = await axios.post("https://fullstack-ordering-food-backend-app.onrender.com/add", { name, description, price, category, weight, foodImage, specificationName },
+            const { data } = await axios.post("https://fullstack-ordering-food-app-backend.vercel.app/add", { name, description, price, category, weight, foodImage, specificationName },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`

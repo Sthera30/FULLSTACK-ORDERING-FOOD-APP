@@ -18,7 +18,7 @@ function EditOurServices() {
 
     try {
 
-      const res = await axios.get(`https://fullstack-ordering-food-backend-app.onrender.com/getOurServicesById?id=${id}`)
+      const res = await axios.get(`https://fullstack-ordering-food-app-backend.vercel.app/getOurServicesById?id=${id}`)
 
       if (res.data.success) {
 
@@ -46,7 +46,7 @@ function EditOurServices() {
 
     try {
 
-      const { data } = await axios.put(`https://fullstack-ordering-food-backend-app.onrender.com/editOurServices`, { id, ourServiceHeading, ourServiceDescription, ourServiceImage })
+      const { data } = await axios.put(`https://fullstack-ordering-food-app-backend.vercel.app/editOurServices`, { id, ourServiceHeading, ourServiceDescription, ourServiceImage })
 
       if (data.success) {
         toast.success(data.message)
@@ -80,7 +80,7 @@ function EditOurServices() {
 
     try {
 
-      const { data } = await axios.post(`https://fullstack-ordering-food-backend-app.onrender.com/upload`, formData)
+      const { data } = await axios.post(`https://fullstack-ordering-food-app-backend.vercel.app/upload`, formData)
 
       setImage({
 

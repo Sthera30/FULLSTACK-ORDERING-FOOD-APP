@@ -22,7 +22,7 @@ function VerifyOtp() {
 
         try {
 
-            const { data } = await axios.post("https://fullstack-ordering-food-backend-app.onrender.com/verify", { otp, email })
+            const { data } = await axios.post("https://fullstack-ordering-food-app-backend.vercel.app/verify", { otp, email })
 
             if (data.error) {
                 toast.error(data.error)

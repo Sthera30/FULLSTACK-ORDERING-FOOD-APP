@@ -44,7 +44,7 @@ const allowedOrigins = [
 
 
 app.use(cors({
-    origin: 'https://fullstack-ordering-food-frontend-app.onrender.com',
+    origin: 'https://fullstack-ordering-food-app-frontend.vercel.app',
     credentials: true
 }));
 
