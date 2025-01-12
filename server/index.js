@@ -186,6 +186,10 @@ app.get('*', (req, res) => {
 });
 
 
+app.get("/", (req, res) => {
+    res.json("Hello!")
+})
+
 //connect to the database
 
 const PORT = process.env.PORT || 8090
